@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>主页</title>
+	<!-- 浏览器收到Html相应内容后，就要从上到下依次解析
+		 当在解析的过程中，如果发现：link,script,img,iframe,video,audio等
+		   具有src或者href属性标签的时候；浏览器会自动会这些资源发起新的请求
+
+		 所有的资源都放在resources目录下，页面中不建议使用相对路径
+
+
+	 -->
+	<link rel="stylesheet" type="text/css" href="/resources/lib/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="header container mt-3">
+		<div class="page-header">
+			<h1>首页 <small class="text-muted" style="font-size: 22px;">评论列表</small></h1>
+			<a href="/views/post" class="btn btn-success mt-3">发表留言</a>
+		</div>
+	</div>
+	<div class="comments container mt-3">
+		<ul class="list-group">
+			{{ each comments }} 
+				<li class="list-group-item d-flex flex-row justify-content-between">
+					{{ $value.name }}说: {{ $value.msg }} 
+					<span style="font-size: 14px;" class="text-black-50">发表于 {{ $value.dateTime }}
+					</span>
+				</li>
+			{{ /each }}
+			
+			<!-- <li class="list-group-item">123455</li> -->
+		</ul>
+
+	</div>
+<script src="/resources/js/jquery-3.4.1.slim.min.js"></script>
+<script src="/resources/js/popper.min.js"></script>
+<script src="/resources/lib/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
